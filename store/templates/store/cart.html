@@ -44,9 +44,9 @@
                 <div style="flex:1">
                     <p class="count">{{ item.count }}</p>
                     <div class="count">
-                        <img class="chg-count" src="{% static  'images/arrow-up.png' %}">
+                        <img class="chg-count add-product" data-product="{{ item.product.id }}" data-action="add" src="{% static  'images/arrow-up.png' %}">
 
-                        <img class="chg-count" src="{% static  'images/arrow-down.png' %}">
+                        <img class="chg-count add-product" data-product="{{ item.product.id }}" data-action="remove" src="{% static  'images/arrow-down.png' %}">
                     </div>
                 </div>
                 <div style="flex:1">
