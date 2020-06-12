@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import *
+from django.core.mail import send_mail
 import json
 import datetime
 
@@ -94,4 +95,6 @@ def processOrder(request):
         code=data['shipping']['code'],
     )
 
-    return JsonResponse('Payment complete', safe=False)
+    #send_mail('django test', 'test body', 'zaripo.rus@gmail.com', ['zaripo.rus@gmail.com'], fail_silently=False)
+
+    return JsonResponse('Payment complete', safe=False)#, send_mail

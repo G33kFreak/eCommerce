@@ -127,3 +127,11 @@ MEDIA_URL = '/images/'
 STATICFILES_DIRS = [
     os.path.join(SITE_ROOT, 'static')
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = 'vapeshopecom@yahoo.com'
+EMAIL_HOST = 'smtp.mail.yahoo.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = 'Pornhub18'
+EMAIL_USE_SSL = False

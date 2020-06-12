@@ -17,6 +17,10 @@ h6 {
     background-color: #141414!important;
 }
 
+.navbar-brand {
+    font-size: 36px!important;
+}
+
 .box-element {
     box-shadow: black 0 0 5px;
     background-color: black;
