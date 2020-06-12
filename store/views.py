@@ -4,7 +4,8 @@ from .models import *
 import json
 import datetime
 
-from .utils import cookieCart, cartData
+from .utils import cookieCart, cartData, guestOrder
+
 
 def store(request):
 
@@ -12,8 +13,9 @@ def store(request):
     cartItems = data['cartItems']
 
     products = Product.objects.all()
-    context = {'products':products, 'cartItems': cartItems,}
+    context = {'products': products, 'cartItems': cartItems, }
     return render(request, 'store/store.html', context)
+
 
 def cart(request):
     data = cartData(request)
@@ -21,12 +23,14 @@ def cart(request):
     order = data['order']
     items = data['items']
 
-    context = {'items':items, 'order':order, 'cartItems':cartItems}
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/cart.html', context)
+
 
 def main(request):
     context = {}
     return render(request, 'store/main.html', context)
+
 
 def checkout(request):
 
@@ -35,8 +39,9 @@ def checkout(request):
     order = data['order']
     items = data['items']
 
-    context = {'items':items, 'order':order, 'cartItems':cartItems}
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/checkout.html', context)
+
 
 def updateItem(request):
     data = json.loads(request.body)
@@ -45,8 +50,10 @@ def updateItem(request):
 
     customer = request.user.customer
     product = Product.objects.get(id=productId)
-    order, created = Order.objects.get_or_create(customer=customer, complete=False)
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    order, created = Order.objects.get_or_create(
+        customer=customer, complete=False)
+    orderItem, created = OrderItem.objects.get_or_create(
+        order=order, product=product)
 
     if action == 'add':
         orderItem.count = (orderItem.count + 1)
@@ -57,8 +64,9 @@ def updateItem(request):
 
     if orderItem.count == 0:
         orderItem.delete()
-    
+
     return JsonResponse('Item was added', safe=False)
+
 
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
@@ -66,21 +74,24 @@ def processOrder(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        total = float(data['form']['total'])
-        order.transaction_id = transaction_id
-
-        if total == order.get_cart_total:
-            order.complete = True
-        order.save()
-
-        ShippingInfo.objects.create(
-            customer = customer,
-            order = order,
-            address = data['shipping']['address'],
-            city = data['shipping']['city'],
-            code = data['shipping']['code'],
-        )
+        order, created = Order.objects.get_or_create(
+            customer=customer, complete=False)
     else:
-        print('Not logged in user')
+        customer, order = guestOrder(request, data)
+
+    total = float(data['form']['total'])
+    order.transaction_id = transaction_id
+
+    if total == order.get_cart_total:
+        order.complete = True
+    order.save()
+
+    ShippingInfo.objects.create(
+        customer=customer,
+        order=order,
+        address=data['shipping']['address'],
+        city=data['shipping']['city'],
+        code=data['shipping']['code'],
+    )
+
     return JsonResponse('Payment complete', safe=False)
