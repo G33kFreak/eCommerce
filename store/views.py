@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
+from django.http import HttpResponse
 from .models import *
 from django.core.mail import send_mail
 import json
@@ -42,6 +43,16 @@ def checkout(request):
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/checkout.html', context)
+
+def productView(request, id):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    product = get_object_or_404(Product, id=id)
+    
+    context = {'product':product, 'cartItems':cartItems}
+
+    return render(request, 'store/product_view.html', context)
+
 
 
 def updateItem(request):

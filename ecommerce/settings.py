@@ -133,5 +133,5 @@ EMAIL_HOST_USER = 'vapeshopecom@yahoo.com'
 EMAIL_HOST = 'smtp.mail.yahoo.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = 'Pornhub18'
+EMAIL_HOST_PASSWORD = 'mega secret password!!!!!!'
 EMAIL_USE_SSL = False
