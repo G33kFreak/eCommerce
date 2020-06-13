@@ -1,18 +1,21 @@
 {% extends 'store/main.html' %} {% load static %} {% block content %}
 
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col col-lg-2">
-            <img class="thumbnail" src="{{product.imageURL}}" alt="">
+<div style="margin-top:50px; margin-bottom: 150px;" class="container">
+    <div class="row">
+        <div class="col-sm">
+            <img style="width: 60%;" class="thumbnail" src="{{product.imageURL}}" alt="">
         </div>
-        <div class="col col-lg-2">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec
+        <div class="col-sm">
+            <h1>{{product.name}}</h1>
+            <p style="margin-top: 25px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec
                 venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue
-                mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna
-                quam viverra nisi, in interdum massa nibh nec erat.</p>
+                mollis. Phasellus congue lacus eget neque.</p>
+            <h1 style="margin-top: 25px;">{{product.price}} PLN</h1>
+            <button data-product={{ product.id }} data-action="add" class="btn btn-outline-success add-product">Add to Cart</button>
         </div>
     </div>
 </div>
+
 
 
 {% endblock content %}

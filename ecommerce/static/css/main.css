@@ -1,6 +1,5 @@
 body {
     background-color: #141414;
-    margin-bottom: 50px;
     color: #FFF;
 }
 
@@ -11,6 +10,20 @@ h4,
 h5,
 h6 {
     color: #FFF;
+}
+
+.soc-ic {
+    margin-right: 15px;
+}
+
+.btn-outline-success {
+    color: #6351CE!important;
+    border-color: #6351CE!important;
+}
+
+.btn-outline-success:hover {
+    background-color: #6351CE!important;
+    color: #FFF!important;
 }
 
 .navbar-dark {
@@ -51,7 +64,7 @@ h6 {
     display: block;
     text-align: center;
     color: #fff;
-    background-color: #28A745;
+    background-color: #6351CE;
     width: 20px;
     height: 25px;
     border-radius: 50%;
