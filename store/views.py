@@ -19,6 +19,15 @@ def store(request):
     context = {'products': products, 'cartItems': cartItems, 'state': activeState}
     return render(request, 'store/store.html', context)
 
+def promotions(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    activeState = {'store':'', 'promo':'active', 'stores':'', 'contact':''}
+    promos = Product.objects.filter(promotion__gt=0)
+
+    context = {'cartItems': cartItems, 'state': activeState, 'promos':promos}
+    return render(request, 'store/promotions.html', context)
+
 def contact(request):
     data = cartData(request)
     cartItems = data['cartItems']

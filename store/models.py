@@ -14,9 +14,15 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=7, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
     description = models.CharField(max_length=900, null=True)
+    promotion = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+
     
     def __str__(self):
         return self.name
+
+    @property
+    def getPrice(self):
+        return self.price - (self.price * (self.promotion / 100))
 
     @property
     def imageURL(self):

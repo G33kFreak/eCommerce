@@ -39,7 +39,7 @@
                     <p>{{ item.product.name }}</p>
                 </div>
                 <div style="flex:1">
-                    <p>{{ item.product.price }} PLN</p>
+                    <p>{{ item.product.getPrice|floatformat:'2' }} PLN</p>
                 </div>
                 <div style="flex:1">
                     <p class="count">{{ item.count }}</p>

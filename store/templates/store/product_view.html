@@ -8,7 +8,11 @@
         <div class="col-sm">
             <h1>{{product.name}}</h1>
             <p style="margin-top: 25px;">{{product.description}}</p>
-            <h1 style="margin-top: 25px;">{{product.price}} PLN</h1>
+            {% if product.promotion != 0 %}
+            <h1><strike style="font-size: 14px;">{{product.price}} PLN</strike> {{product.getPrice|floatformat:'2'}} PLN</h1>
+            {% else %}
+            <h1 style="margin-top: 25px;">{{product.getPrice|floatformat:'2'}} PLN</h1>
+            {% endif %}
             <button style="background-color: #6351CE!important; border-radius: 0px; border-color: #6351CE!important;" data-product={{ product.id }} data-action="add" class="btn btn-success add-product">Add to Cart</button>
         </div>
     </div>
