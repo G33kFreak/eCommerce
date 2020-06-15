@@ -68,6 +68,13 @@ class ShippingInfo(models.Model):
 
     def __str__(self):
         return self.address
+
+class Contact(models.Model):
+    email = models.EmailField()
+    phoneNum = models.CharField(max_length=15)
+    facebookURL = models.URLField()
+    instagramURL = models.URLField()
+    youtubeURL = models.URLField()
     
     
     

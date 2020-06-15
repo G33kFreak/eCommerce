@@ -61,17 +61,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
+                <li class="nav-item {{state.store}}">
+                    <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only"></span></a>
                 </li>
-                <li class='nav-item'>
+                <li class='nav-item {{state.promo}}'>
                     <a class="nav-link" href="{% url 'store' %}">Promotions <span class="sr-only"></span></a>
                 </li>
-                <li class='nav-item'>
+                <li class='nav-item {{state.stores}}'>
                     <a class="nav-link" href="{% url 'store' %}">Our stores <span class="sr-only"></span></a>
                 </li>
-                <li class='nav-item'>
-                    <a class="nav-link" href="{% url 'store' %}">Contact <span class="sr-only"></span></a>
+                <li class='nav-item {{state.contact}}'>
+                    <a class="nav-link" href="{% url 'contact' %}">Contact <span class="sr-only"></span></a>
                 </li>
             </ul>
             <div class="form-inline my-2 my-lg-0">
@@ -107,15 +107,15 @@
                     <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                         <!-- Facebook -->
-                        <a class="soc-ic">
+                        <a href="#" class="soc-ic">
                             <i><img src="{% static  'images/facebook.png' %}" alt=""> </i>
                         </a>
                         <!--YouTube-->
-                        <a class="soc-ic">
+                        <a href="#" class="soc-ic">
                             <i><img src="{% static  'images/youtube.png' %}" alt=""> </i>
                         </a>
                         <!--Instagram-->
-                        <a class="soc-ic">
+                        <a href="#" class="soc-ic">
                             <i><img src="{% static  'images/instagram.png' %}" alt=""> </i>
                         </a>
 

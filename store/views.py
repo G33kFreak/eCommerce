@@ -13,10 +13,21 @@ def store(request):
 
     data = cartData(request)
     cartItems = data['cartItems']
+    activeState = {'store':'active', 'promo':'', 'stores':'', 'contact':''}
 
     products = Product.objects.all()
-    context = {'products': products, 'cartItems': cartItems, }
+    context = {'products': products, 'cartItems': cartItems, 'state': activeState}
     return render(request, 'store/store.html', context)
+
+def contact(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    activeState = {'store':'', 'promo':'', 'stores':'', 'contact':'active'}
+    contact = Contact.objects.get(pk=1)
+
+    context = {'cartItems': cartItems, 'state': activeState, 'contact':contact}
+    return render(request, 'store/contact.html', context)
+
 
 
 def cart(request):

@@ -26,6 +26,11 @@ h6 {
     color: #FFF!important;
 }
 
+.btn-success {
+    background-color: #6351CE!important;
+    border-color: #6351CE!important;
+}
+
 .navbar-dark {
     background-color: #141414!important;
 }
