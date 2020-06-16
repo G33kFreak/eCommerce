@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+
     <script type="text/javascript">
         var user = '{{ request.user }}'
 
@@ -68,7 +73,7 @@
                     <a class="nav-link" href="{% url 'promotions' %}">Promotions <span class="sr-only"></span></a>
                 </li>
                 <li class='nav-item {{state.stores}}'>
-                    <a class="nav-link" href="{% url 'store' %}">Our stores <span class="sr-only"></span></a>
+                    <a class="nav-link" href="{% url 'our_stores' %}">Our stores <span class="sr-only"></span></a>
                 </li>
                 <li class='nav-item {{state.contact}}'>
                     <a class="nav-link" href="{% url 'contact' %}">Contact <span class="sr-only"></span></a>
@@ -140,7 +145,8 @@
                     <!-- Content -->
                     <h6 class="text-uppercase font-weight-bold">VapeShop</h6>
                     <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>Our VapeShop is a guarantee of quality. Our main goal is to make our customers happy with vaping!</p>
+                    <p>Our VapeShop is a guarantee of quality. Our main goal is to make our customers happy with vaping!
+                    </p>
 
                 </div>
                 <!-- Grid column -->

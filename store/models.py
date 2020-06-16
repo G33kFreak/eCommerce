@@ -60,7 +60,7 @@ class OrderItem(models.Model):
 
     @property
     def get_total(self):
-        total = self.product.price * self.count
+        total = self.product.getPrice * self.count
         return total
 
 
@@ -81,7 +81,7 @@ class Contact(models.Model):
     facebookURL = models.URLField()
     instagramURL = models.URLField()
     youtubeURL = models.URLField()
-    
+    address = models.CharField(max_length=200, null=True)
     
     
 
