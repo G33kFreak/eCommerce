@@ -139,6 +139,6 @@ def processOrder(request):
 
     emailMessage = 'Dear, {}!\nThank you for your order in our VapeShop!\nYour order numer is {}.\nAll the best,\nVapeShop team'.format(customer.name, order.transaction_id)
 
-    send_mail('Order successfully placed', emailMessage, 'mytestemail228@gmail.com', ['zaripo.rus@gmail.com'])
+    send_mail('Order successfully placed', emailMessage, '', [customer.email])
 
     return JsonResponse('Payment complete', safe=False)
